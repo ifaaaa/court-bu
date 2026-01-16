@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>Шүүхийн баримт нууцлах систем</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    /* Background image – NEVER CROPS */
+    .bg-image {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;        /* ✅ FULL IMAGE, NO CROP */
+      object-position: center;
+      background-color: #0b1a2b;  /* fill empty space */
+      z-index: -2;
+    }
+
+    /* Dark overlay */
+    .bg-overlay {
+      position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.25)
+  );
+  z-index: -1;
+    }
+
+    /* Page layout */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Form container */
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    input[type="file"] {
+      margin-bottom: 20px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #198754;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #155d27;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background -->
+  <img src="/static/bu.jpg" class="bg-image" alt="background">
+  <div class="bg-overlay"></div>
+
+  <!-- Content -->
+  <div class="container">
+    <h1>📄 Иргэний хувийн мэдээлэл нууцлах</h1>
+
+    <form enctype="multipart/form-data" method="post" action="/upload">
+      <input type="file" name="file" accept=".docx" required>
+      <button type="submit">НУУЦЛАХ</button>
+    </form>
+  </div>
+
+</body>
+</html>
